@@ -3,3 +3,13 @@ data "aws_ami" "ami" {
   owners           = ["self"]
 
 }
+
+# Use this data source to get the access
+# to the effective Account ID, User ID, and ARN in which Terraform is authorized.
+data "aws_caller_identity" "account" {}
+# inside this data source block we need not give any argument
+
+
+data "aws_route53_zone" "domain" {
+  name  = var.dns_domain   # input >> dns_domain = "nellore.online"
+}
